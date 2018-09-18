@@ -50,26 +50,28 @@ This system can be split into three logical pieces
 Task is a JSON object exchanged between the Transit VPC and Subscriber VPC, or between states within a system. The Task has information about the next operation (Action) to be performed, and the data needed to perform the next operation. One or more lambda functions associated with the State machine will execute the "Action" defined by the "Task".
 
 eg:
+```json
 {
-    'Action': 'ConfigureSubscribingVpcVpn',  # Next action to perform
-    'IpSegment': "169.254.8.0/28",           # Supernet of all /30s for a PA Group
-    'N1T1': "169.254.8.0/30",                # /30 ip range for Node1 IPSec Tunnel 1
-    'N1T2': "169.254.8.4/30",                # /30 ip range for Node1 IPSec Tunnel 2
-    'N1Eip': "<Node1 EIP>",
-    'N1Asn': "<Node1 BGP ASN>",
-    'N2T1': "169.254.8.8/30",                # /30 ip range for Node2 IPSec Tunnel 1
-    'N2T2': "169.254.8.12/30",               # /30 ip range for Node2 IPSec Tunnel 2
-    'N2Eip': "<Node2 EIP>"'
-    'N2Asn': "<Node2 BGP ASN>",
-    'PaGroupName': "<PA Group Name>",
-    'Rebalance' : "False",
-    'VpcId': "<Subscriber VPC ID>",
-    'VpcCidr': "<Subscriber VPC CIDR>",
-    'Region': "<Subscriber VPC AWS Region>",
-    'TransitVpnBucketName': "<Bucket to push VPN configuration file>",
-    'TransitAssumeRoleArn': "<IAM Role to assume while contacting Transit system>",
-    'TransitSnsArn': "<Transit SNS ARN>"
+    "Action": "ConfigureSubscribingVpcVpn",  # Next action to perform
+    "IpSegment": "169.254.8.0/28",           # Supernet of all /30s for a PA Group
+    "N1T1": "169.254.8.0/30",                # /30 ip range for Node1 IPSec Tunnel 1
+    "N1T2": "169.254.8.4/30",                # /30 ip range for Node1 IPSec Tunnel 2
+    "N1Eip": "<Node1 EIP>",
+    "N1Asn": "<Node1 BGP ASN>",
+    "N2T1": "169.254.8.8/30",                # /30 ip range for Node2 IPSec Tunnel 1
+    "N2T2": "169.254.8.12/30",               # /30 ip range for Node2 IPSec Tunnel 2
+    "N2Eip": "<Node2 EIP>",
+    "N2Asn": "<Node2 BGP ASN>",
+    "PaGroupName": "<PA Group Name>",
+    "Rebalance" : "False",
+    "VpcId": "<Subscriber VPC ID>",
+    "VpcCidr": "<Subscriber VPC CIDR>",
+    "Region": "<Subscriber VPC AWS Region>",
+    "TransitVpnBucketName": "<Bucket to push VPN configuration file>",
+    "TransitAssumeRoleArn": "<IAM Role to assume while contacting Transit system>",
+    "TransitSnsArn": "<Transit SNS ARN>"
 }
+```
 
 ### Transit VPC
 This logical system takes care of automatically configuring VPN and managing resources on the "Transit VPC". The Following are a few tasks handled by the transit system
