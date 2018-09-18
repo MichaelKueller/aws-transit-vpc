@@ -47,7 +47,7 @@ This system can be split into three logical pieces
 3. Subscriber system
 
 ### Task and Action
-Task is a JSON object exchanged between the Transit VPC and Subscriber VPC, or between states within a system. The Task has information about the next operation (Action) to be performed, and the data needed to perform the next operation. One or lambda functions associated with the State machine will execute the "Action" defined by the "Task"
+Task is a JSON object exchanged between the Transit VPC and Subscriber VPC, or between states within a system. The Task has information about the next operation (Action) to be performed, and the data needed to perform the next operation. One or more lambda functions associated with the State machine will execute the "Action" defined by the "Task".
 
 eg:
 {
